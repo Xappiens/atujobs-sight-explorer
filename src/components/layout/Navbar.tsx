@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { Search, User } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -17,6 +18,8 @@ import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  // Esto simularía un estado de autenticación - en una app real vendría de un contexto de autenticación
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -109,27 +112,73 @@ const Navbar = () => {
             </Button>
           </Link>
           
-          <Popover open={isLoginOpen} onOpenChange={setIsLoginOpen}>
-            <PopoverTrigger asChild>
-              <Button variant="outline" size="sm">
-                Iniciar Sesión
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-80 p-0" align="end" sideOffset={8}>
-              <div className="bg-white rounded-md shadow">
-                <LoginForm 
-                  isPopover={true}
-                  onLoginSuccess={() => setIsLoginOpen(false)} 
-                />
-              </div>
-            </PopoverContent>
-          </Popover>
-          
-          <Link to="/auth/register">
-            <Button size="sm">
-              Publicar Empleo
-            </Button>
-          </Link>
+          {isLoggedIn ? (
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" size="sm" className="flex items-center gap-2">
+                  <User className="h-4 w-4" />
+                  <span>Mi cuenta</span>
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-56" align="end">
+                <div className="grid gap-3">
+                  <div className="font-medium">Usuario Demo</div>
+                  <div className="grid grid-cols-1 gap-1">
+                    <Link to="/dashboard">
+                      <Button variant="ghost" size="sm" className="w-full justify-start">
+                        Dashboard
+                      </Button>
+                    </Link>
+                    <Link to="/dashboard">
+                      <Button variant="ghost" size="sm" className="w-full justify-start">
+                        Mi perfil
+                      </Button>
+                    </Link>
+                    <Link to="/dashboard">
+                      <Button variant="ghost" size="sm" className="w-full justify-start">
+                        Empleos guardados
+                      </Button>
+                    </Link>
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="w-full justify-start text-red-500 hover:text-red-600"
+                      onClick={() => setIsLoggedIn(false)} // En una app real sería una función de logout
+                    >
+                      Cerrar sesión
+                    </Button>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          ) : (
+            <>
+              <Popover open={isLoginOpen} onOpenChange={setIsLoginOpen}>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" size="sm">
+                    Iniciar Sesión
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-80 p-0" align="end" sideOffset={8}>
+                  <div className="bg-white rounded-md shadow">
+                    <LoginForm 
+                      isPopover={true}
+                      onLoginSuccess={() => {
+                        setIsLoginOpen(false);
+                        setIsLoggedIn(true); // En una app real esto se manejaría a través de un contexto de autenticación
+                      }} 
+                    />
+                  </div>
+                </PopoverContent>
+              </Popover>
+              
+              <Link to="/auth/register">
+                <Button size="sm">
+                  Publicar Empleo
+                </Button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>

@@ -1,4 +1,5 @@
 
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,6 +19,7 @@ import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import CategoriesPage from "./pages/jobs/CategoriesPage";
 import SearchPage from "./pages/jobs/SearchPage";
+import DashboardPage from "./pages/dashboard/DashboardPage";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +52,9 @@ const App = () => (
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/register" element={<RegisterPage />} />
           
+          {/* Ruta del dashboard de usuario */}
+          <Route path="/dashboard" element={<DashboardPage />} />
+          
           {/* Ruta 404 - siempre debe estar al final */}
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -59,3 +64,4 @@ const App = () => (
 );
 
 export default App;
+
