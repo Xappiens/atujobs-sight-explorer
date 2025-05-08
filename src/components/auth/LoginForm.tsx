@@ -44,7 +44,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
   }
 
   return (
-    <div className={`${isPopover ? "w-80" : "w-full max-w-md mx-auto p-8 bg-white rounded-lg shadow-md"}`}>
+    <div className={`${isPopover ? "w-full p-4" : "w-full max-w-md mx-auto p-8 bg-white rounded-lg shadow-md"}`}>
       {!isPopover && <h2 className="text-2xl font-bold mb-6 text-center">Iniciar sesión</h2>}
       
       <Form {...form}>
@@ -54,11 +54,11 @@ const LoginForm: React.FC<LoginFormProps> = ({
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="text-xs sm:text-sm">Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="tu@email.com" {...field} />
+                  <Input placeholder="tu@email.com" {...field} className="text-xs sm:text-sm h-8 sm:h-10" />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-xs" />
               </FormItem>
             )}
           />
@@ -67,22 +67,22 @@ const LoginForm: React.FC<LoginFormProps> = ({
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Contraseña</FormLabel>
+                <FormLabel className="text-xs sm:text-sm">Contraseña</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="********" {...field} />
+                  <Input type="password" placeholder="********" {...field} className="text-xs sm:text-sm h-8 sm:h-10" />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-xs" />
               </FormItem>
             )}
           />
           
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full text-xs sm:text-sm h-8 sm:h-10">
             Iniciar sesión
           </Button>
           
           {isPopover ? (
-            <div className="text-center mt-3">
-              <Link to="/auth/login" className="text-sm text-job-blue hover:underline">
+            <div className="text-center mt-2">
+              <Link to="/auth/register" className="text-xs sm:text-sm text-job-blue hover:underline">
                 ¿No tienes cuenta? Regístrate
               </Link>
             </div>

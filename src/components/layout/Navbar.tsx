@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -114,11 +113,13 @@ const Navbar = () => {
                 Iniciar Sesión
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="p-0" align="end" sideOffset={8}>
-              <LoginForm 
-                isPopover={true}
-                onLoginSuccess={() => setIsLoginOpen(false)} 
-              />
+            <PopoverContent className="w-80 p-0" align="end" sideOffset={8}>
+              <div className="bg-white rounded-md shadow">
+                <LoginForm 
+                  isPopover={true}
+                  onLoginSuccess={() => setIsLoginOpen(false)} 
+                />
+              </div>
             </PopoverContent>
           </Popover>
           
