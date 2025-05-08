@@ -4,8 +4,18 @@ import JobSearch from '../jobs/JobSearch';
 
 const HeroSection = () => {
   return (
-    <section className="bg-gradient-to-r from-job-blue to-job-darkBlue text-white py-16 md:py-24">
-      <div className="container mx-auto px-4 text-center">
+    <section className="relative bg-gradient-to-r from-job-blue to-job-darkBlue text-white py-16 md:py-24">
+      {/* Imagen de fondo con superposición */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
+          alt="Jóvenes profesionales" 
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-job-blue/90 to-job-darkBlue/90"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 text-center relative z-10">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">
           Encuentra tu próximo empleo ideal
         </h1>
