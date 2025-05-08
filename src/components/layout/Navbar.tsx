@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
@@ -11,10 +11,14 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import LoginForm from "@/components/auth/LoginForm";
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -103,12 +107,26 @@ const Navbar = () => {
             <Search className="h-4 w-4 mr-2" />
             Buscar
           </Button>
-          <Button variant="outline" size="sm">
-            Iniciar Sesión
-          </Button>
-          <Button size="sm">
-            Publicar Empleo
-          </Button>
+          
+          <Popover open={isLoginOpen} onOpenChange={setIsLoginOpen}>
+            <PopoverTrigger asChild>
+              <Button variant="outline" size="sm">
+                Iniciar Sesión
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="p-0" align="end" sideOffset={8}>
+              <LoginForm 
+                isPopover={true}
+                onLoginSuccess={() => setIsLoginOpen(false)} 
+              />
+            </PopoverContent>
+          </Popover>
+          
+          <Link to="/auth/register">
+            <Button size="sm">
+              Publicar Empleo
+            </Button>
+          </Link>
         </div>
       </div>
     </header>
