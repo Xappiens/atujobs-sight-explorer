@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -55,10 +56,10 @@ const Navbar = () => {
                         </Link>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/jobs" title="Buscador">
+                    <ListItem href="/jobs/search" title="Buscador">
                       Busca ofertas de trabajo por categoría, ubicación o palabra clave
                     </ListItem>
-                    <ListItem href="/jobs/categories" title="Bolsa de oficios">
+                    <ListItem href="/jobs/categories/list" title="Bolsa de oficios">
                       Explora empleos por profesión o sector específico
                     </ListItem>
                   </ul>
@@ -102,10 +103,12 @@ const Navbar = () => {
         </div>
         
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="sm" className="hidden md:flex items-center">
-            <Search className="h-4 w-4 mr-2" />
-            Buscar
-          </Button>
+          <Link to="/jobs/search">
+            <Button variant="ghost" size="sm" className="hidden md:flex items-center">
+              <Search className="h-4 w-4 mr-2" />
+              Buscar
+            </Button>
+          </Link>
           
           <Popover open={isLoginOpen} onOpenChange={setIsLoginOpen}>
             <PopoverTrigger asChild>

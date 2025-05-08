@@ -1,27 +1,13 @@
 
 export interface Job {
-  id: string;
+  id: number;
   title: string;
   company: string;
-  logo: string;
   location: string;
-  type: string;
+  description: string;
   salary: string;
-  postedDate: string;
-  description: string;
-  requirements: string[];
-  responsibilities: string[];
-  featured?: boolean;
-}
-
-export interface Company {
-  id: string;
-  name: string;
-  logo: string;
-  description: string;
-  website: string;
-  location: string;
-  industry: string;
-  size: string;
-  founded: string;
+  type: string;
+  date: string;
+  category: string;
+  companyLogo?: string;
 }

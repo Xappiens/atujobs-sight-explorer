@@ -16,6 +16,8 @@ import ServiceRecruitmentPage from "./pages/services/RecruitmentPage";
 import ServiceCareersPage from "./pages/services/CareersPage";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
+import CategoriesPage from "./pages/jobs/CategoriesPage";
+import SearchPage from "./pages/jobs/SearchPage";
 
 const queryClient = new QueryClient();
 
@@ -27,17 +29,28 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          
+          {/* Rutas de empleos */}
           <Route path="/jobs" element={<JobsPage />} />
           <Route path="/jobs/:jobId" element={<JobDetailPage />} />
           <Route path="/jobs/categories" element={<JobCategoriesPage />} />
+          <Route path="/jobs/search" element={<SearchPage />} />
+          <Route path="/jobs/categories/list" element={<CategoriesPage />} />
+          
+          {/* Rutas principales */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          
+          {/* Rutas de servicios */}
           <Route path="/services/training" element={<ServiceTrainingPage />} />
           <Route path="/services/recruitment" element={<ServiceRecruitmentPage />} />
           <Route path="/services/careers" element={<ServiceCareersPage />} />
+          
+          {/* Rutas de autenticación */}
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/register" element={<RegisterPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          
+          {/* Ruta 404 - siempre debe estar al final */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
