@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,12 +8,25 @@ import { Search, MapPin } from 'lucide-react';
 interface JobSearchProps {
   className?: string;
   compact?: boolean;
+  initialQuery?: string;
+  initialLocation?: string;
 }
 
-const JobSearch: React.FC<JobSearchProps> = ({ className = '', compact = false }) => {
+const JobSearch: React.FC<JobSearchProps> = ({ 
+  className = '', 
+  compact = false, 
+  initialQuery = '',
+  initialLocation = ''
+}) => {
   const navigate = useNavigate();
-  const [query, setQuery] = useState('');
-  const [location, setLocation] = useState('');
+  const [query, setQuery] = useState(initialQuery);
+  const [location, setLocation] = useState(initialLocation);
+
+  // Update state when props change
+  useEffect(() => {
+    setQuery(initialQuery);
+    setLocation(initialLocation);
+  }, [initialQuery, initialLocation]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

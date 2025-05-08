@@ -10,4 +10,11 @@ export interface Job {
   date: string;
   category: string;
   companyLogo?: string;
+  
+  // Added missing properties
+  featured?: boolean;
+  logo?: string;
+  postedDate?: string;
+  requirements?: string[];
+  responsibilities?: string[];
 }
