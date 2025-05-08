@@ -4,7 +4,7 @@ import JobSearch from '../jobs/JobSearch';
 
 const HeroSection = () => {
   return (
-    <section className="relative text-white py-16 md:py-24">
+    <section className="relative text-white py-16 md:py-24 z-10">
       {/* Imagen de fondo con superposición */}
       <div className="absolute inset-0 z-0">
         <img 

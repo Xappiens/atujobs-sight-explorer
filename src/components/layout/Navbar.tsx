@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center space-x-8">
           <Link to="/" className="flex items-center">
@@ -36,7 +36,7 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Empleos</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 bg-white">
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
                         <Link
@@ -73,7 +73,7 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Servicio</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 bg-white">
                     <ListItem href="/services/training" title="Formación">
                       Programas de capacitación y desarrollo profesional
                     </ListItem>
