@@ -73,49 +73,107 @@ function parseExtrasFromDescription(html: string) {
 /**
  * Trae todos los Job Opening desde ERPNext, sin límite.
  */
-export async function getAllJobs(): Promise<Job[]> {
-  const url = `${baseURL}/api/resource/Job%20Opening`
-    + `?fields=${encodeURIComponent(JSON.stringify(JOB_FIELDS))}`;
+export async function getJobs(
 
+  page = 1,
+
+  pageSize = 20
+
+): Promise<Job[]> {
+
+  const offset = (page - 1) * pageSize;
+
+  const qs = new URLSearchParams({
+
+    fields: JSON.stringify(JOB_FIELDS),
+
+    limit_page_length: String(pageSize),
+
+    limit_start:         String(offset),
+
+  });
+ 
+  const url = `${baseURL}/api/resource/Job%20Opening?${qs.toString()}`;
+ 
   const res = await fetch(url, {
-    headers: {
-      'Authorization': `token ${apiKey}:${apiSecret}`,
-      'Content-Type':  'application/json'
-    }
-  });
-  if (!res.ok) throw new Error(`Error fetching jobs: ${res.status}`);
 
-  const { data } = await res.json();
-  return data.map((item: any) => {
-    const { experience, salary: extraSalary } =
-      parseExtrasFromDescription(item.description || '');
-    const salary = extraSalary
-      || (item.salary_per != null
-          ? `${item.lower_range || 0}-${item.upper_range || 0} ${item.currency || ''}`
-          : '');
-    return {
-      id:             item.name,
-      slug:           item.name,
-      title:          item.job_title,
-      company:        item.company,
-      description:    item.description,
-      location:       item.location   || '',
-      salary,
-      type:           item.employment_type || '',
-      date:           item.posted_on,
-      category:       item.department      || '',
-      companyLogo:    '',
-      featured:       false,
-      logo:           '',
-      postedDate:     item.posted_on,
-      requirements:   [],
-      responsibilities: [],
-      logoUrl:        '',
-      experience      // recién extraído
-    } as Job;
+    headers: {
+
+      'Authorization': `token ${apiKey}:${apiSecret}`,
+
+      'Content-Type':  'application/json',
+
+    },
+
   });
+
+  if (!res.ok) {
+
+    throw new Error(`Error fetching jobs: ${res.status}`);
+
+  }
+ 
+  const { data } = await res.json();
+
+  return data.map((item: any) => {
+
+    const { experience, salary: extraSalary } =
+
+      parseExtrasFromDescription(item.description || '');
+
+    const salary = extraSalary
+
+      || (item.salary_per != null
+
+          ? `${item.lower_range || 0}-${item.upper_range || 0} ${item.currency || ''}`
+
+          : '');
+
+    return {
+
+      id:             item.name,
+
+      slug:           item.name,
+
+      title:          item.job_title,
+
+      company:        item.company,
+
+      description:    item.description,
+
+      location:       item.location   || '',
+
+      salary,
+
+      type:           item.employment_type || '',
+
+      date:           item.posted_on,
+
+      category:       item.department      || '',
+
+      companyLogo:    '',
+
+      featured:       false,
+
+      logo:           '',
+
+      postedDate:     item.posted_on,
+
+      requirements:   [],
+
+      responsibilities: [],
+
+      logoUrl:        '',
+
+      experience
+
+    } as Job;
+
+  });
+
 }
 
+ 
 /**
  * Trae 5 ofertas destacadas (limit_page_length=5).
  */
