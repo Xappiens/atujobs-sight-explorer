@@ -59,7 +59,7 @@ const JobFilter: React.FC<JobFilterProps> = ({
             ['Remoto','REMOTO'],
             ['Freelance','FREELANCE'],
           ].map(([label, value]) => (
-            <div key={value} className="flex items-center space-x-2">
+            <div key={value} className="flex items-center space-x-2 mb-2">
               <Checkbox
                 checked={jobTypes.includes(value)}
                 onCheckedChange={() => toggleJobType(value)}
