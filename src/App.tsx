@@ -20,6 +20,7 @@ import RegisterPage from "./pages/auth/RegisterPage";
 import CategoriesPage from "./pages/jobs/CategoriesPage";
 import SearchPage from "./pages/jobs/SearchPage";
 import DashboardPage from "./pages/dashboard/DashboardPage";
+import CompanyDetailPage from "./components/companies/CompanyDetailPage";
 
 const queryClient = new QueryClient();
 
@@ -38,7 +39,9 @@ const App = () => (
           <Route path="/jobs/categories" element={<JobCategoriesPage />} />
           <Route path="/jobs/search" element={<SearchPage />} />
           <Route path="/jobs/categories/list" element={<CategoriesPage />} />
-          
+
+          {/*Ruta de la página de la compañía que ofrece el empleo */}
+          <Route path="/companies/:companyId" element={<CompanyDetailPage />} />
           {/* Rutas principales */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />

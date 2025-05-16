@@ -1,4 +1,3 @@
-
 export interface Job {
   id: number;
   title: string;
@@ -10,7 +9,7 @@ export interface Job {
   date: string;
   category: string;
   companyLogo?: string;
-  
+  experience?: string
   // Added missing properties
   featured?: boolean;
   logo?: string;
