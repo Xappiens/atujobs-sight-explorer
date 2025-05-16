@@ -3,6 +3,7 @@ import React from 'react';
 import JobSearch from '../jobs/JobSearch';
 
 const HeroSection = () => {
+  //commit
   return (
     <section className="relative text-white py-16 md:py-24 z-10">
       {/* Imagen de fondo con superposición */}
