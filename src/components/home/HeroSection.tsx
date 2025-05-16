@@ -3,6 +3,7 @@ import React from 'react';
 import JobSearch from '../jobs/JobSearch';
 
 const HeroSection = () => {
+  //commit
   return (
     <section className="relative text-white py-16 md:py-24 z-10">
       {/* Imagen de fondo con superposición */}
@@ -22,7 +23,7 @@ const HeroSection = () => {
         <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-90">
           Miles de ofertas de trabajo de las mejores empresas en España te están esperando
         </p>
-        
+      
         <JobSearch className="max-w-4xl mx-auto" />
         
         <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center">
