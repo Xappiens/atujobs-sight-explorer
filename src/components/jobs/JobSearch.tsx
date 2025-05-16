@@ -54,7 +54,7 @@ const JobSearch: React.FC<JobSearchProps> = ({
       >
         <div className="relative flex-grow">
           <Search
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            className="absolute left-3 top-1/2 transform -translate-y-1/2"
             size={18}
           />
           <Input
@@ -62,13 +62,13 @@ const JobSearch: React.FC<JobSearchProps> = ({
             placeholder="Buscar trabajo, palabras clave o empresa"
             value={query}
             onChange={(e) => handleQueryChange(e.target.value)}
-            className="pl-10"
+            className="pl-10 text-black"
           />
         </div>
 
         <div className="relative flex-grow">
           <MapPin
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black"
             size={18}
           />
           <Input
@@ -76,7 +76,7 @@ const JobSearch: React.FC<JobSearchProps> = ({
             placeholder="Ciudad o provincia"
             value={location}
             onChange={(e) => handleLocationChange(e.target.value)}
-            className="pl-10"
+            className="pl-10 text-black"
           />
         </div>
 
