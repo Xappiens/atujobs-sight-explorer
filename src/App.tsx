@@ -25,6 +25,7 @@ import CompanyDetailPage from "./components/companies/CompanyDetailPage";
 const queryClient = new QueryClient();
 
 const App = () => (
+  //página principal
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
