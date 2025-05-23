@@ -21,6 +21,10 @@ import CategoriesPage from "./pages/jobs/CategoriesPage";
 import SearchPage from "./pages/jobs/SearchPage";
 import DashboardPage from "./pages/dashboard/DashboardPage";
 import CompanyDetailPage from "./components/companies/CompanyDetailPage";
+import TrainingActionsPage from "./pages/SpecialitiesPage";
+import EspecialidadesPage from "./pages/EspecialidadesPage";
+import SpecialtiesPage from "./pages/SpecialitiesPage";
+import { Job } from "./types/job";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +61,10 @@ const App = () => (
           
           {/* Ruta del dashboard de usuario */}
           <Route path="/dashboard" element={<DashboardPage />} />
+
+          {/* Ruta de caformaciones */}
+          <Route path="/especialidades" element={<SpecialtiesPage />} />
+
           
           {/* Ruta 404 - siempre debe estar al final */}
           <Route path="*" element={<NotFound />} />

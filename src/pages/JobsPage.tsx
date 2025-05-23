@@ -28,38 +28,40 @@ const JobsPage: React.FC = () => {
   };
  
   // Cuando cambian filtros o página, recargamos la lista
-  useEffect(() => {
-    (async () => {
-      setLoading(true);
-      try {
-        // Traemos sólo la página actual
-        const data = await getJobs(page, PAGE_SIZE);
-        // Luego client-side filtrado
-        const filtered = filterJobs(
-          data,
-          initialFilters.query,
-          initialFilters.location,
-          initialFilters.jobTypes,
-          initialFilters.category,
-          initialFilters.experience,
-          initialFilters.salary
-        );
-        setJobs(filtered);
-      } catch (e) {
-        console.error(e);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, [
-    page,
-    initialFilters.query,
-    initialFilters.location,
-    JSON.stringify(initialFilters.jobTypes),
-    initialFilters.category,
-    initialFilters.experience,
-    initialFilters.salary
-  ]);
+// en JobsPage.tsx
+useEffect(() => {
+  (async () => {
+    setLoading(true);
+    try {
+      // Pasamos initialFilters.category como 3er argumento
+      const data = await getJobs(page, PAGE_SIZE, initialFilters.category);
+      // Solo aplicamos client-side los demás filtros (q, location, type, experience, salary)
+      const filtered = filterJobs(
+        data,
+        initialFilters.query,
+        initialFilters.location,
+        initialFilters.jobTypes,
+        "",          // category ya filtrado en backend
+        initialFilters.experience,
+        initialFilters.salary
+      );
+      setJobs(filtered);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  })();
+}, [
+  page,
+  initialFilters.query,
+  initialFilters.location,
+  JSON.stringify(initialFilters.jobTypes),
+  initialFilters.category,    // si cambia la categoría, recargamos
+  initialFilters.experience,
+  initialFilters.salary,
+]);
+
  
   // Helpers para actualizar URL (manteniendo filtros)
   const updateParams = (overrides: Record<string, string | string[] | number>) => {
