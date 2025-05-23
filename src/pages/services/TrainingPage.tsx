@@ -11,7 +11,7 @@ const TrainingPage = () => {
       description: 'Aprende HTML, CSS, JavaScript, React y Node.js para convertirte en un desarrollador web completo.',
       duration: '12 semanas',
       modality: 'Online / Presencial',
-      familia: 'IFC',
+      familia: 'IYC',
       image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     },
     {
@@ -20,7 +20,7 @@ const TrainingPage = () => {
       description: 'Domina las estrategias de SEO, SEM, redes sociales y email marketing para impulsar negocios en línea.',
       duration: '8 semanas',
       modality: 'Online',
-      familia: 'COM',
+      familia: 'CYM',
       image: 'https://images.unsplash.com/photo-1557838923-2985c318be48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     },
     {
